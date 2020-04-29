@@ -9,6 +9,9 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
 
+HEROKU_BUILDPACK_GIT_LFS_REPO = "https://github.com/Build-Week-Medicine-Cabinet/DS/tree/master/pickled_files"
+
+
 app = Flask(__name__)
 
 
