@@ -17,7 +17,7 @@ nn_model = joblib.load('pickled_files/nn_model.pkl')
 tfidf = joblib.load('pickled_files/tfidf.1.pkl')  
 
 # #Load the dataframe from file
-df = pd.read_pickle("pickled_files/df.pkl")
+dfcleaned = pd.read_pickle("pickled_files/df.pkl")
 
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
@@ -69,7 +69,7 @@ def predict(user_inputs):
     return the best cannabis strains for that user. 
     """
     strain_query = get_user_inputs(user_inputs)
-    reccomondations = output_user_reccomendations(strain_query, df)
+    reccomondations = output_user_reccomendations(strain_query, dfcleaned)
     return reccomondations
 
 @app.route("/recommendations")
