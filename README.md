@@ -1,7 +1,7 @@
 # DS
 
 # PRODUCT VISION DOCUMENT
-This is the template for the Product Vision Document that teams complete after their initial icebreaker. The PVD is crucial to the planning phase and is mandatory for all groups to complete and submit to their Project Lead before starting their project.
+This is the template for the Product Vision Document (PVD).
 
 #### MEMBERS
 Data Engineering: Mason, Ping
@@ -18,13 +18,13 @@ Adrian: Front-End WEB31s
 Provides the strain needed based on users’ medical condition.
 Be as specific as possible; how does your app solve the problem?
 User is able to look up various strands, anonymously.
-Gives user the dosage, intake method, and intake schedule.
+Gives user the name of the strain, it’s type, description.
 What is the mission statement?
 Provides users with an easy to use resource to make informed decisions about medical cannabis consumption, as an alternative to pharmaceutical drugs.
 💡 Features
 
 ### What features are required for your minimum viable product?
-Use data from a Strain API
+Use data from the Kaggle Dataset
 Using machine learning in order to make recommendations
 Ability to save recommendations.
 Ability to create a user (to login).
@@ -38,13 +38,13 @@ Potbotics - more of a personalized cannabis recommendation.
 What 3rd party frameworks/libraries are you considering using?
 React, Redux, Node.js, Keras, Tensorflow, Flask
 Do the APIs you need require you to contact them to gain access?
-In research - by monday 27 april
+We are using a Kaggle dataset
 Are you required to pay to use said API(s)?
 🧮 For Data Scientists
 
 Describe the established data source with at least rough data able to be provided on day one.
 MVP - predict the types of strains someone would want based on their desires. 
-Inputs - symptoms, emotions(happy, relaxed, etc), flavor
+Inputs - ailments, effects(happy, relaxed, etc), flavor
 Outputs - strains/types, description 
 Stretch: dosage, intake method
 Find an API that provides us the data we need, in not use the Kaggle dataset with strains, types, and descriptions. 
