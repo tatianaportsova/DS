@@ -17,6 +17,7 @@ flask-migrate = "*"
 sklearn = "*"
 scikit-learn = "0.22.2"
 joblib = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"

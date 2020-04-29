@@ -34,34 +34,30 @@ def get_user_inputs(data):
 
 
 def output_user_reccomendations(query, dframe):
-    import joblib
     _, similar_topic_indices = nn_model.kneighbors(query.todense())
-    indices = similar_topic_indices[0]
-    # print(indices)
-    recc_values = {
-    'first': {},
-    'second': {},
-    'third': {},
-    'fourth': {},
-    'fifth': {}
-    }
+    indices = list(similar_topic_indices[0])
+    recc_values = []
     
     def get_index_values(index):
         output_values = {
+        'ID':[],
         'Strain':[], 
         'Type':[], 
         'Rating':[], 
         'Flavor':[], 
         'Effects':[], 
         'Description':[]}
-
-        for value in output_values:
-            output_values[value].append(dframe[value][index])
-        return output_values
-
-    for key, value in enumerate(recc_values):
-        recc_values[value] = get_index_values(indices[key])
+        ##Updated output, commented out others just in case you want to change back.
+        output_values['Strain'].append(dframe['Strain'][index])
+        #output_values['ID'].append(index)
+        #print(list(output_values.keys()))
+        #for value in list(output_values.keys())[1:]:
+        #output_values[value].append(dframe[value][index])
+        return output_values['Strain'][0]
+    for key in range(0, len(indices)):
+        recc_values.append(get_index_values(indices[key]))
     return recc_values
+
 
 def predict(user_inputs):
     """
@@ -72,8 +68,8 @@ def predict(user_inputs):
     reccomondations = output_user_reccomendations(strain_query, dfcleaned)
     return reccomondations
 
-@app.route("/recommendations")
-def reccomend():
+@app.route("/recommendations", method=['Get', 'Post'])
+def recommend(user_inputs):
     # user_inputs = request.get_json(force=True)
     user_inputs = {
         'effects': ['happy', 'creative'],
@@ -84,6 +80,7 @@ def reccomend():
     return jsonify(prediction)
 
 
+# creates the flask app and configures it. 
 def create_app():
     """ Create and configure flask app"""
     app = Flask(__name__)
@@ -104,7 +101,7 @@ def root():
 
 
 
-# route to display all strains if we want to 
+# optional route to display all strains if we want to 
 @app.route("/strains")
 def strains():
     """
@@ -117,3 +114,5 @@ def strains():
         raise e
 
     return(all_strains)
+
+
