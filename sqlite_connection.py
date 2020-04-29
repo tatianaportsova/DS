@@ -2,7 +2,6 @@ import sqlite3
 import pandas as pd
 from sqlalchemy import create_engine
 import os
-from dotenv import load_dotenv
 
 
 CSV_FILEPATH = os.path.join(os.path.dirname(__file__), "cannabis.csv")
