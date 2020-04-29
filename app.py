@@ -103,6 +103,7 @@ def root():
     return "We have the best app"
 
 
+
 # route to display all strains if we want to 
 @app.route("/strains")
 def strains():
