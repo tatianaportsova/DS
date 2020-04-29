@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 # # # Load the model from file 
 nn_model = joblib.load('pickled_files/nn_model.pkl')  
-tfidf = joblib.load('pickled_files/tfidf.pkl')  
+tfidf = joblib.load('pickled_files/tfidf.1.pkl')  
 
 # #Load the dataframe from file
 df = pd.read_pickle("pickled_files/df.pkl")
