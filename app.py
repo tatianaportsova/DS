@@ -68,7 +68,7 @@ def predict(user_inputs):
     reccomondations = output_user_reccomendations(strain_query, dfcleaned)
     return reccomondations
 
-@app.route("/recommendations", method=['Get', 'Post'])
+@app.route("/recommendations")
 def recommend(user_inputs):
     # user_inputs = request.get_json(force=True)
     user_inputs = {
