@@ -18,7 +18,7 @@ def df_create(CSV_FILEPATH):
 
 cannabis_df = df_create('cannabis.csv')
 conn = sqlite3.connect('cannabis.sqlite3')
-cannabis_df.to_sql('cannabis', conn, if_exists='replace', index=False)
+cannabis_df.to_sql('cannabis', conn, if_exists='append', index=False)
 curs = conn.cursor()
 conn.commit()
 
