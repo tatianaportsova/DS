@@ -9,3 +9,12 @@ nltk
 pandas==1.0.3
 scipy
 beautifulsoup4
+
+pandas == 1.0.3
+numpy == 1.18.3
+flask-sqlalchemy = 2.4.1
+flask == 1.1.2
+requests == 2.23.0
+flask-migrate == 2.5.3
+joblib == 0.14.1
+gunicorn == gunicorn 20.0.4
