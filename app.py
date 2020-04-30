@@ -84,6 +84,7 @@ def predict(user_inputs):
 
 @app.route('/recommendations/<effects>/<flavors>/<ailments>', methods=['GET', 'POST'])
 def recommends(effects,flavors,ailments):
+    
     user_inputs = {
         'effects': list(effects.split()),
         'flavors': list(flavors.split()),
@@ -91,6 +92,7 @@ def recommends(effects,flavors,ailments):
     }
     content = request.json
     print(content)
+    return jsonify(content)
     prediction = predict(user_inputs)
     return jsonify(prediction)
 
