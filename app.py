@@ -20,7 +20,7 @@ nn_model = joblib.load('pickled_files/nn_model.pkl')
 tfidf = joblib.load('pickled_files/tfidf.1.pkl')  
 
 # #Load the dataframe from file
-dfcleaned = pd.read_pickle("pickled_files/df.pkl")
+dfcleaned = pd.read_pickle("pickled_files/dfcleaned.pkl")
 
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
@@ -72,7 +72,7 @@ def predict(user_inputs):
     return reccomondations
 
 @app.route("/recommendations")
-def recommend(user_inputs):
+def recommend():
     # user_inputs = request.get_json(force=True)
     user_inputs = {
         'effects': ['happy', 'creative'],
