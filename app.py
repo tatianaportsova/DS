@@ -33,11 +33,11 @@ def root():
 
 
 # # # Load the model from file 
-nn_model = joblib.load("pickled_files/knn_01.pkl")  
-tfidf = joblib.load("pickled_files/tfidf.1.pkl")  
+nn_model = joblib.load("pickled_files/knn_02.pkl")  
+tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")  
 
 # #Load the dataframe from file
-dfcleaned = pd.read_pickle("pickled_files/dfcleaned.pkl")
+dfcleaned = joblib.load("pickled_files/tokens_pickled.pkl")
 
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
@@ -98,8 +98,6 @@ def recommend():
     prediction = predict(user_inputs)
     response = json.dumps(prediction)
     return response
-
-
 
 
 # optional route to display all strains if we want to 
