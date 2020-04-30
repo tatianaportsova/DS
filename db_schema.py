@@ -1,19 +1,19 @@
 
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_migrate import Migrate
 
-DB = SQLAlchemy()
-migrate = Migrate()
+# DB = SQLAlchemy()
+# migrate = Migrate()
 
-# database class
+# # database class
 
-class Weed(DB.Model):
-    strain = DB.Column(DB.String, primary_key=True)
-    weed_type = DB.Column(DB.String(25))
-    rating = DB.Column(DB.Float, nullable=False)
-    effects = DB.Column(DB.String(100))
-    flavors = DB.column(DB.String(100))
-    description = DB.Column(DB.String(1000))
+# class Weed(DB.Model):
+#     strain = DB.Column(DB.String, primary_key=True)
+#     weed_type = DB.Column(DB.String(25))
+#     rating = DB.Column(DB.Float, nullable=False)
+#     effects = DB.Column(DB.String(100))
+#     flavors = DB.column(DB.String(100))
+#     description = DB.Column(DB.String(1000))
 
 
 # here's a list of the flavors,effects and ailments in case we need them

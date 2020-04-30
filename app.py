@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from db_schema import Weed, DB, migrate
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+
 import os 
 import pandas as pd
 import pickle
@@ -10,6 +12,26 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
 
 HEROKU_BUILDPACK_GIT_LFS_REPO = "https://github.com/Build-Week-Medicine-Cabinet/DS/tree/master/pickled_files"
+
+app = Flask(__name__)
+
+# creates the flask app and configures it. 
+def create_app():
+    """ Create and configure flask app"""
+    app = Flask(__name__)
+    CORS(app)
+
+    # configure the database:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cannabis.sqlite3'
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # suppress warning messages
+    DB = SQLAlchemy(app)
+
+    return app
+
+
+@app.route('/')
+def root():
+    return "We have the best app"
 
 
 # # # Load the model from file 
@@ -80,25 +102,6 @@ def recommend():
     return jsonify(prediction)
 
 
-# creates the flask app and configures it. 
-def create_app():
-    """ Create and configure flask app"""
-    app = Flask(__name__)
-    
-    # configure the database:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cannabis.sqlite3'
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # suppress warning messages
-    
-    DB.init_app(app)
-    migrate.init_app(app, DB)
-
-    return app
-
-
-@app.route('/')
-def root():
-    return "We have the best app"
-
 
 
 # optional route to display all strains if we want to 
@@ -114,5 +117,4 @@ def strains():
         raise e
 
     return(all_strains)
-
 
