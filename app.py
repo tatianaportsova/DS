@@ -1,12 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-
 import os 
 import pandas as pd
 import pickle
-from sqlite_connection import df_create
 from sklearn.neighbors import NearestNeighbors
 from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
@@ -35,11 +32,11 @@ def root():
 
 
 # # # Load the model from file 
-nn_model = joblib.load('pickled_files/nn_model.pkl')  
-tfidf = joblib.load('pickled_files/tfidf.1.pkl')  
+nn_model = joblib.load("pickled_files/nn_model.pkl", "r+")  
+tfidf = joblib.load("pickled_files/tfidf.1.pkl", "r+")  
 
 # #Load the dataframe from file
-dfcleaned = pd.read_pickle("pickled_files/dfcleaned.pkl")
+dfcleaned = pd.read_pickle("pickled_files/dfcleaned.pkl", "r+")
 
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
