@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+import json
 import os 
 import pandas as pd
 import pickle
@@ -32,11 +33,11 @@ def root():
 
 
 # # # Load the model from file 
-nn_model = joblib.load("pickled_files/nn_model.pkl", "r+")  
-tfidf = joblib.load("pickled_files/tfidf.1.pkl", "r+")  
+nn_model = joblib.load("pickled_files/nn_model.pkl")  
+tfidf = joblib.load("pickled_files/tfidf.1.pkl")  
 
 # #Load the dataframe from file
-dfcleaned = pd.read_pickle("pickled_files/dfcleaned.pkl", "r+")
+dfcleaned = pd.read_pickle("pickled_files/dfcleaned.pkl")
 
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
@@ -87,8 +88,11 @@ def predict(user_inputs):
     reccomondations = output_user_reccomendations(strain_query, dfcleaned)
     return reccomondations
 
-@app.route("/recommendations")
+@app.route("/recommendations", methods=["GET"])
 def recommend():
+    # parse input features from request
+    # request_json = request.get_json()
+    # user_inputs = request_json['input']
     # user_inputs = request.get_json(force=True)
     user_inputs = {
         'effects': ['happy', 'creative'],
@@ -96,22 +100,22 @@ def recommend():
         'ailments': ['depression', 'headaches']
     }
     prediction = predict(user_inputs)
-    return jsonify(prediction)
+    response = json.dumps(prediction)
+    return response
 
 
 
 
 # optional route to display all strains if we want to 
-@app.route("/strains")
-def strains():
-    """
-    Function: returns a list of all the cannbais strains.
-    Returns: list of strains as a JSON array
-    """
-    try:
-        all_strains = df.to_json(orient="records")
-    except Exception as e:
-        raise e
+# @app.route("/strains")
+# def strains():
+#     """
+#     Function: returns a list of all the cannbais strains.
+#     Returns: list of strains as a JSON array
+#     """
+#     try:
+#         all_strains = df.to_json(orient="records")
+#     except Exception as e:
+#         raise e
 
-    return(all_strains)
-
+#     return(all_strains)
