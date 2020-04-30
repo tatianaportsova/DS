@@ -13,6 +13,8 @@ HEROKU_BUILDPACK_GIT_LFS_REPO = "https://github.com/Build-Week-Medicine-Cabinet/
 
 app = Flask(__name__)
 
+df = pd.read_csv('cannabis.csv')
+
 # creates the flask app and configures it. 
 def create_app():
     """ Create and configure flask app"""
@@ -33,23 +35,26 @@ def root():
 
 
 # # # Load the model from file 
-nn_model = joblib.load("pickled_files/nn_3.pkl")  
-tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")  
+# nn_model = joblib.load("pickled_files/nn_3.pkl")  
+# tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")
+
+tfidf = pickle.load(open("pickled_files/vect_01.pkl", "rb"))
+nn_model = pickle.load(open("pickled_files/knn_01.pkl", "rb"))
 
 # #Load the dataframe from file
-dfcleaned = joblib.load("pickled_files/tokens_pickled.pkl")
+# dfcleaned = joblib.load("pickled_files/tokens_pickled.pkl")
 
-dtm = tfidf.fit_transform(dfcleaned['General_Description'])
+#option 1
+# dtm = tfidf.fit_transform(df['General_Description'])
 
-general_dtm = pd.DataFrame(dtm.todense(), columns=tfidf.get_feature_names())
-nn_model = nn_model.fit(general_dtm)
+# general_dtm = pd.DataFrame(dtm.todense(), columns=tfidf.get_feature_names())
+# nn_model = nn_model.fit(general_dtm)
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
 ## THE JSON DICTIONARY SENT TO US TO MATCH THE BELOW 
 ## PYTHON DICTIONARY.
 
 def get_user_inputs(data):
-        import joblib 
         user_desc = ''
         for index in data:
             for values in data[index]:
@@ -85,7 +90,7 @@ def predict(user_inputs):
     return the best cannabis strains for that user. 
     """
     strain_query = get_user_inputs(user_inputs)
-    reccomondations = output_user_reccomendations(strain_query, dfcleaned)
+    reccomondations = output_user_reccomendations(strain_query, df)
     return reccomondations
 
 @app.route("/recommendations", methods=["GET"])
