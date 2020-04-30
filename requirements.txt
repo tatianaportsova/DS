@@ -10,7 +10,6 @@ pandas==1.0.3
 scipy
 beautifulsoup4
 
-nltkdata = 0.0.1
 pandas == 1.0.3
 numpy == 1.18.3
 flask-sqlalchemy == 2.4.1
