@@ -9,6 +9,7 @@ ipykernel
 pandas==1.0.3
 scipy
 beautifulsoup4
+pickle == *
 
 pandas == 1.0.3
 numpy == 1.18.3
@@ -18,5 +19,4 @@ requests == 2.23.0
 flask-migrate == 2.5.3
 joblib == 0.14.1
 gunicorn ==20.0.4
-rules = 2.2
 git-lfs == 2.10.0
