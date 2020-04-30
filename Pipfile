@@ -25,6 +25,8 @@ Flask = "==1.1.2"
 Flask-Migrate = "==2.5.3"
 flask-cors = "*"
 rules = "*"
+git = "*"
+lfs = "*"
 
 [requires]
 python_version = "3.8"
