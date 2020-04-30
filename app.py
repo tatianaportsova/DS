@@ -39,6 +39,10 @@ tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")
 # #Load the dataframe from file
 dfcleaned = joblib.load("pickled_files/tokens_pickled.pkl")
 
+dtm = tfidf.fit_transform(dfcleaned['General_Description'])
+
+general_dtm = pd.DataFrame(dtm.todense(), columns=tfidf.get_feature_names())
+nn_model = nn_model.fit(general_dtm)
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
 ## THE JSON DICTIONARY SENT TO US TO MATCH THE BELOW 
