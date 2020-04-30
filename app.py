@@ -92,7 +92,7 @@ def recommends(effects,flavors,ailments):
     }
     content = request.json
     print(content)
-    return jsonify(content)
+    # return jsonify(content)
     prediction = predict(user_inputs)
     return jsonify(prediction)
 
