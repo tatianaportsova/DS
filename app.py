@@ -12,9 +12,6 @@ import joblib
 HEROKU_BUILDPACK_GIT_LFS_REPO = "https://github.com/Build-Week-Medicine-Cabinet/DS/tree/master/pickled_files"
 
 
-app = Flask(__name__)
-
-
 # # # Load the model from file 
 nn_model = joblib.load('pickled_files/nn_model.pkl')  
 tfidf = joblib.load('pickled_files/tfidf.1.pkl')  
