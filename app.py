@@ -39,7 +39,7 @@ def root():
 # tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")
 
 tfidf = pickle.load(open("pickled_files/vect_01.pkl", "rb"))
-nn_model = pickle.load(open("pickled_files/knn_01.pkl", "rb"))
+nn_model = pickle.load(open("pickled_files/knn_02.pkl", "rb"))
 
 # #Load the dataframe from file
 # dfcleaned = joblib.load("pickled_files/tokens_pickled.pkl")
