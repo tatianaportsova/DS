@@ -33,20 +33,10 @@ def root():
 
 
 # # # Load the model from file 
-# nn_model = joblib.load("pickled_files/nn_3.pkl")  
-# tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")
 
 tfidf = pickle.load(open("pickled_files/vect_01.pkl", "rb"))
 nn_model = pickle.load(open("pickled_files/knn_02.pkl", "rb"))
 
-# #Load the dataframe from file
-# dfcleaned = joblib.load("pickled_files/tokens_pickled.pkl")
-
-#option 1
-# dtm = tfidf.fit_transform(df['General_Description'])
-
-# general_dtm = pd.DataFrame(dtm.todense(), columns=tfidf.get_feature_names())
-# nn_model = nn_model.fit(general_dtm)
 
 ## GOING TO NEED TO CREATE A FUNCTION TO PARSE
 ## THE JSON DICTIONARY SENT TO US TO MATCH THE BELOW 
@@ -91,20 +81,20 @@ def predict(user_inputs):
     reccomondations = output_user_reccomendations(strain_query, df)
     return reccomondations
 
-@app.route("/recommendations", methods=["GET"])
-def recommend():
-    # parse input features from request
-    # request_json = request.get_json()
-    # user_inputs = request_json['input']
-    # user_inputs = request.get_json(force=True)
+
+@app.route('/recommendations/<effects>/<flavors>/<ailments>', methods=['GET', 'POST'])
+def recommends(effects,flavors,ailments):
     user_inputs = {
-        'effects': ['happy', 'creative'],
-        'flavors': ['strawberry, pineapple'],
-        'ailments': ['depression', 'headaches']
+        'effects': list(effects.split()),
+        'flavors': list(flavors.split()),
+        'ailments': list(ailments.split())
     }
+    content = request.json
+    print(content)
     prediction = predict(user_inputs)
-    response = json.dumps(prediction)
-    return response
+    return jsonify(prediction)
+
+
 
 
 # optional route to display all strains if we want to 
