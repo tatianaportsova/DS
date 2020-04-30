@@ -33,7 +33,7 @@ def root():
 
 
 # # # Load the model from file 
-nn_model = joblib.load("pickled_files/knn_02.pkl")  
+nn_model = joblib.load("pickled_files/nn_3.pkl")  
 tfidf = joblib.load("pickled_files/tfidf_pickled.pkl")  
 
 # #Load the dataframe from file
