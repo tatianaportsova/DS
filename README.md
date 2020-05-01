@@ -4,11 +4,11 @@
 ## As one of groups for creating Med Cabinet Project, we DS students work on:
 
 ```sh
-- 1. Source and analyze data to better understand the reported effects of different cannabis strains/types.
+-1. Source and analyze data to better understand the reported effects of different cannabis strains/types.
 
-- 2. Create a model to predict which strains/types a user would enjoy based on their input (desired effects). Can use any techniques you wish.
+-2. Create a model to predict which strains/types a user would enjoy based on their input (desired effects). Can use any techniques you wish.
 
-- 3. Make the recommendations accessible to the rest of the team via a Flask API or equivalent.
+-3. Make the recommendations accessible to the rest of the team via a Flask API or equivalent.
 ```
 
 # Instructions for Usage the Flask API:
