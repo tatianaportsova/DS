@@ -4,14 +4,14 @@
 ## As one of groups for creating Med Cabinet Project, we DS students work on:
 
 ```sh
--1. Source and analyze data to better understand the reported effects of different cannabis strains/types.
+* Source and analyze data to better understand the reported effects of different cannabis strains/types.
 
--2. Create a model to predict which strains/types a user would enjoy based on their input (desired effects). Can use any techniques you wish.
+* Create a model to predict which strains/types a user would enjoy based on their input (desired effects). Can use any techniques you wish.
 
--3. Make the recommendations accessible to the rest of the team via a Flask API or equivalent.
+* Make the recommendations accessible to the rest of the team via a Flask API or equivalent.
 ```
 
-# Instructions for Usage the Flask API:
+## Instructions for Usage the Flask API:
 
 ### Migrate the db:
 
@@ -27,3 +27,6 @@ FLASK_APP = app flask run
 ### Windows:
 set  FLASK_APP = app   
 flask run
+
+### Welcome to our website:
+[link to !](https://med-cabinet-tk-be.herokuapp.com/)
