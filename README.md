@@ -16,5 +16,5 @@ FLASK_APP = app flask db upgrade
 FLASK_APP = app flask run
 
 ## Windows:
-export or set  FLASK_APP = app   
+set  FLASK_APP = app   
 flask run
