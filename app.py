@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+
 import json
 import os 
 import pandas as pd
 import pickle
+
 from sklearn.neighbors import NearestNeighbors
 from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
@@ -31,16 +33,14 @@ def create_app():
 def root():
     return "We have the best app"
 
-
-# # # Load the model from file 
+# Load the model from file 
 
 tfidf = pickle.load(open("pickled_files/vect_01.pkl", "rb"))
 nn_model = pickle.load(open("pickled_files/knn_02.pkl", "rb"))
 
-
-## GOING TO NEED TO CREATE A FUNCTION TO PARSE
-## THE JSON DICTIONARY SENT TO US TO MATCH THE BELOW 
-## PYTHON DICTIONARY.
+# GOING TO NEED TO CREATE A FUNCTION TO PARSE
+# THE JSON DICTIONARY SENT TO US TO MATCH THE BELOW 
+# PYTHON DICTIONARY.
 
 def get_user_inputs(data):
         user_desc = ''
@@ -95,8 +95,6 @@ def recommends(effects,flavors,ailments):
     # return jsonify(content)
     prediction = predict(user_inputs)
     return jsonify(prediction)
-
-
 
 
 # optional route to display all strains if we want to 

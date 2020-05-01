@@ -5,6 +5,7 @@ scikit-learn==0.22.2
 seaborn==0.9.0
 squarify==0.4.3
 ipykernel
+
 # nltk == 3.5
 pandas==1.0.3
 scipy
@@ -18,4 +19,5 @@ flask == 1.1.2
 requests == 2.23.0
 flask-migrate == 2.5.3
 joblib == 0.14.1
+
 gunicorn ==20.0.4

@@ -12,8 +12,7 @@ FLASK_APP = app flask db migrate
 FLASK_APP = app flask db upgrade
 ```
 
-```sh
-## Unix:
+## Mac:
 FLASK_APP = app flask run
 
 ## Windows:
