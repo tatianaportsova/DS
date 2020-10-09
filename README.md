@@ -29,5 +29,6 @@ set  FLASK_APP = app
 flask run
 
 ### Welcome to our website:
-[MedCabinet] (https://medicabinett.netlify.app/)
+[MedCabinet](https://medicabinett.netlify.app/)
+
 [herokuapp](https://med-cabinet-tk-be.herokuapp.com/)
